@@ -1,0 +1,23 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# Build artifacts
+*.nupkg
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git worktrees (per AGENTS.md)
+.worktrees/
+
+# Agent/tool sessions
+.agent-session-logs/
+.ruff_cache/

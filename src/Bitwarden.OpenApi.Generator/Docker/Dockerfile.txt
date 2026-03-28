@@ -1,0 +1,66 @@
+ARG SDK_VERSION=8.0
+FROM mcr.microsoft.com/dotnet/sdk:${SDK_VERSION} AS build
+
+ARG REPO_URL=https://github.com/bitwarden/server.git
+ARG REF=main
+
+WORKDIR /src
+RUN git clone --depth 1 --branch ${REF} ${REPO_URL} server
+
+WORKDIR /src/server
+
+# Remove .NET SDK version pin from global.json but keep custom SDK resolvers
+RUN if [ -f global.json ]; then \
+      sed -i '/"version"/d' global.json && \
+      sed -i 's/"rollForward"[^,}]*/"rollForward": "latestMajor"/g' global.json && \
+      cat global.json; \
+    fi
+
+RUN dotnet tool restore
+
+# Detect target framework from the Api project or Directory.Build.props
+RUN TFM=$( \
+      sed -n 's/.*<TargetFramework>\(.*\)<\/TargetFramework>.*/\1/p' src/Api/Api.csproj | head -1 \
+    ) && \
+    if [ -z "$TFM" ]; then \
+      TFM=$(sed -n 's/.*<TargetFramework>\(.*\)<\/TargetFramework>.*/\1/p' src/Directory.Build.props 2>/dev/null | head -1); \
+    fi && \
+    if [ -z "$TFM" ]; then \
+      TFM=$(find src/Api/bin/Release -name 'Api.dll' -path '*/net*/*' | head -1 | sed 's|.*/\(net[^/]*\)/.*|\1|'); \
+    fi && \
+    if [ -z "$TFM" ]; then TFM="net8.0"; fi && \
+    echo "$TFM" > /tmp/tfm.txt && \
+    echo "Detected TFM: $TFM"
+
+RUN dotnet build src/Api/Api.csproj -c Release --nologo -v quiet
+RUN dotnet build src/Identity/Identity.csproj -c Release --nologo -v quiet
+
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV GLOBALSETTINGS__SQLSERVER__CONNECTIONSTRING=placeholder
+ENV GLOBALSETTINGS__BASESERVICEURI__VAULT=https://localhost
+ENV GLOBALSETTINGS__BASESERVICEURI__INTERNALIDENTITY=https://localhost
+ENV swaggerGen=true
+
+RUN mkdir -p /specs
+
+RUN TFM=$(cat /tmp/tfm.txt) && \
+    dotnet swagger tofile \
+      --output /specs/bitwarden-vault.json \
+      src/Api/bin/Release/${TFM}/Api.dll \
+      internal
+
+RUN TFM=$(cat /tmp/tfm.txt) && \
+    dotnet swagger tofile \
+      --output /specs/bitwarden-public.json \
+      src/Api/bin/Release/${TFM}/Api.dll \
+      public
+
+RUN TFM=$(cat /tmp/tfm.txt) && \
+    dotnet swagger tofile \
+      --output /specs/bitwarden-identity.json \
+      src/Identity/bin/Release/${TFM}/Identity.dll \
+      v1 \
+    || echo '{"info":{"title":"Identity spec generation skipped","version":"v1"},"paths":{}}' > /specs/bitwarden-identity.json
+
+FROM alpine:3.20
+COPY --from=build /specs /specs

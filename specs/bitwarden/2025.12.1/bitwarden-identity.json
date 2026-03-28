@@ -1,0 +1,1204 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Bitwarden Identity",
+    "version": "2025.12.1"
+  },
+  "paths": {
+    "/accounts/register/send-verification-email": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "Accounts_PostRegisterSendVerificationEmail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterSendVerificationEmailRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterSendVerificationEmailRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterSendVerificationEmailRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-action-name": "PostRegisterSendVerificationEmail",
+        "x-action-name-snake-case": "post_register_send_verification_email",
+        "x-source-file": "src/Identity/Controllers/AccountsController.cs",
+        "x-source-line": 113
+      }
+    },
+    "/accounts/register/verification-email-clicked": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "Accounts_PostRegisterVerificationEmailClicked",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterVerificationEmailClickedRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterVerificationEmailClickedRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterVerificationEmailClickedRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-action-name": "PostRegisterVerificationEmailClicked",
+        "x-action-name-snake-case": "post_register_verification_email_clicked",
+        "x-source-file": "src/Identity/Controllers/AccountsController.cs",
+        "x-source-line": 130
+      }
+    },
+    "/accounts/register/finish": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "Accounts_PostRegisterFinish",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterFinishRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterFinishRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterFinishRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterFinishResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterFinishResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterFinishResponseModel"
+                }
+              }
+            }
+          }
+        },
+        "x-action-name": "PostRegisterFinish",
+        "x-action-name-snake-case": "post_register_finish",
+        "x-source-file": "src/Identity/Controllers/AccountsController.cs",
+        "x-source-line": 148
+      }
+    },
+    "/accounts/prelogin": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "Accounts_PostPrelogin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordPreloginRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordPreloginRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordPreloginRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasswordPreloginResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasswordPreloginResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasswordPreloginResponseModel"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true,
+        "x-action-name": "PostPrelogin",
+        "x-action-name-snake-case": "post_prelogin",
+        "x-source-file": "src/Identity/Controllers/AccountsController.cs",
+        "x-source-line": 209
+      }
+    },
+    "/accounts/prelogin/password": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "Accounts_PostPasswordPrelogin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordPreloginRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordPreloginRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordPreloginRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasswordPreloginResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasswordPreloginResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasswordPreloginResponseModel"
+                }
+              }
+            }
+          }
+        },
+        "x-action-name": "PostPasswordPrelogin",
+        "x-action-name-snake-case": "post_password_prelogin",
+        "x-source-file": "src/Identity/Controllers/AccountsController.cs",
+        "x-source-line": 220
+      }
+    },
+    "/accounts/webauthn/assertion-options": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "Accounts_GetWebAuthnLoginAssertionOptions",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebAuthnLoginAssertionOptionsResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebAuthnLoginAssertionOptionsResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebAuthnLoginAssertionOptionsResponseModel"
+                }
+              }
+            }
+          }
+        },
+        "x-action-name": "GetWebAuthnLoginAssertionOptions",
+        "x-action-name-snake-case": "get_web_authn_login_assertion_options",
+        "x-source-file": "src/Identity/Controllers/AccountsController.cs",
+        "x-source-line": 236
+      }
+    },
+    "/accounts/trial/send-verification-email": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "Accounts_PostTrialInitiationSendVerificationEmail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrialSendVerificationEmailRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrialSendVerificationEmailRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrialSendVerificationEmailRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-action-name": "PostTrialInitiationSendVerificationEmail",
+        "x-action-name-snake-case": "post_trial_initiation_send_verification_email",
+        "x-source-file": "src/Identity/Billing/Controller/AccountsController.cs",
+        "x-source-line": 18
+      }
+    },
+    "/alive": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "operationId": "Info_GetAlive",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
+          }
+        },
+        "x-action-name": "GetAlive",
+        "x-action-name-snake-case": "get_alive",
+        "x-source-file": "src/Identity/Controllers/InfoController.cs",
+        "x-source-line": 11
+      }
+    },
+    "/now": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "operationId": "Info_GetNow",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true,
+        "x-action-name": "GetNow",
+        "x-action-name-snake-case": "get_now",
+        "x-source-file": "src/Identity/Controllers/InfoController.cs",
+        "x-source-line": 18
+      }
+    },
+    "/version": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "operationId": "Info_GetVersion",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-action-name": "GetVersion",
+        "x-action-name-snake-case": "get_version",
+        "x-source-file": "src/Identity/Controllers/InfoController.cs",
+        "x-source-line": 24
+      }
+    },
+    "/sso/PreValidate": {
+      "get": {
+        "tags": [
+          "Sso"
+        ],
+        "operationId": "Sso_PreValidate",
+        "parameters": [
+          {
+            "name": "domainHint",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-action-name": "PreValidate",
+        "x-action-name-snake-case": "pre_validate",
+        "x-source-file": "src/Identity/Controllers/SsoController.cs",
+        "x-source-line": 46
+      }
+    },
+    "/sso/Login": {
+      "get": {
+        "tags": [
+          "Sso"
+        ],
+        "operationId": "Sso_Login",
+        "parameters": [
+          {
+            "name": "returnUrl",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-action-name": "Login",
+        "x-action-name-snake-case": "login",
+        "x-source-file": "src/Identity/Controllers/SsoController.cs",
+        "x-source-line": 81
+      }
+    },
+    "/sso/ExternalChallenge": {
+      "get": {
+        "tags": [
+          "Sso"
+        ],
+        "operationId": "Sso_ExternalChallenge",
+        "parameters": [
+          {
+            "name": "domainHint",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "returnUrl",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIdentifier",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ssoToken",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-action-name": "ExternalChallenge",
+        "x-action-name-snake-case": "external_challenge",
+        "x-source-file": "src/Identity/Controllers/SsoController.cs",
+        "x-source-line": 108
+      }
+    },
+    "/sso/ExternalCallback": {
+      "get": {
+        "tags": [
+          "Sso"
+        ],
+        "operationId": "Sso_ExternalCallback",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "x-action-name": "ExternalCallback",
+        "x-action-name-snake-case": "external_callback",
+        "x-source-file": "src/Identity/Controllers/SsoController.cs",
+        "x-source-line": 149
+      }
+    },
+    "/connect/token": {
+      "post": {
+        "tags": [
+          "Connect"
+        ],
+        "summary": "Exchange credentials for an access token (OAuth2 password or client_credentials grant)",
+        "operationId": "Connect_Token",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "grant_type",
+                  "client_id"
+                ],
+                "type": "object",
+                "properties": {
+                  "grant_type": {
+                    "enum": [
+                      "password",
+                      "client_credentials"
+                    ],
+                    "type": "string",
+                    "description": "OAuth2 grant type: 'password' or 'client_credentials'"
+                  },
+                  "username": {
+                    "type": "string",
+                    "description": "Email address (for password grant)"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "Base64-encoded master password hash (for password grant)"
+                  },
+                  "scope": {
+                    "type": "string",
+                    "description": "Requested scopes, e.g. 'api offline_access'"
+                  },
+                  "client_id": {
+                    "type": "string",
+                    "description": "Client identifier: 'cli', 'web', 'browser', 'desktop', 'mobile', or an API key client_id"
+                  },
+                  "client_secret": {
+                    "type": "string",
+                    "description": "Client secret (for client_credentials grant with API key)"
+                  },
+                  "deviceType": {
+                    "type": "integer",
+                    "description": "Device type enum: 9=CLI, 6=WindowsDesktop, 7=MacOsDesktop, etc.",
+                    "format": "int32"
+                  },
+                  "deviceIdentifier": {
+                    "type": "string",
+                    "description": "Unique device GUID"
+                  },
+                  "deviceName": {
+                    "type": "string",
+                    "description": "Device name string, e.g. 'cli'"
+                  },
+                  "devicePushToken": {
+                    "type": "string",
+                    "description": "Push notification token (empty for CLI)"
+                  },
+                  "twoFactorToken": {
+                    "type": "string",
+                    "description": "2FA code (TOTP, YubiKey, etc.)"
+                  },
+                  "twoFactorProvider": {
+                    "type": "integer",
+                    "description": "2FA provider: 0=Authenticator, 1=Email, 2=Duo, 3=YubiKey, 5=Remember, 7=WebAuthn",
+                    "format": "int32"
+                  },
+                  "twoFactorRemember": {
+                    "type": "integer",
+                    "description": "Set to 1 to remember this device for 2FA",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful authentication",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Authentication failed (invalid credentials, 2FA required, etc.)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AssertionOptions": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "challenge": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "timeout": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rpId": {
+            "type": "string",
+            "nullable": true
+          },
+          "allowCredentials": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublicKeyCredentialDescriptor"
+            },
+            "nullable": true
+          },
+          "userVerification": {
+            "$ref": "#/components/schemas/UserVerificationRequirement"
+          },
+          "extensions": {
+            "$ref": "#/components/schemas/AuthenticationExtensionsClientInputs"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthenticationExtensionsClientInputs": {
+        "type": "object",
+        "properties": {
+          "example.extension": {
+            "nullable": true
+          },
+          "appid": {
+            "type": "string",
+            "nullable": true
+          },
+          "authnSel": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "byte"
+            },
+            "nullable": true
+          },
+          "exts": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "uvm": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthenticatorTransport": {
+        "enum": [
+          "usb",
+          "nfc",
+          "ble",
+          "internal"
+        ],
+        "type": "string",
+        "x-enum-varnames": [
+          "Usb",
+          "Nfc",
+          "Ble",
+          "Internal"
+        ]
+      },
+      "KdfSettings": {
+        "required": [
+          "iterations",
+          "kdfType"
+        ],
+        "type": "object",
+        "properties": {
+          "kdfType": {
+            "$ref": "#/components/schemas/KdfType"
+          },
+          "iterations": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "memory": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "parallelism": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "KdfType": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32",
+        "x-enum-varnames": [
+          "PBKDF2_SHA256",
+          "Argon2id"
+        ]
+      },
+      "KeysRequestModel": {
+        "required": [
+          "encryptedPrivateKey",
+          "publicKey"
+        ],
+        "type": "object",
+        "properties": {
+          "publicKey": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "encryptedPrivateKey": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PasswordPreloginRequestModel": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 256,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PasswordPreloginResponseModel": {
+        "type": "object",
+        "properties": {
+          "kdf": {
+            "$ref": "#/components/schemas/KdfType"
+          },
+          "kdfIterations": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "kdfMemory": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "kdfParallelism": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "kdfSettings": {
+            "$ref": "#/components/schemas/KdfSettings"
+          },
+          "salt": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductTierType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32",
+        "x-enum-varnames": [
+          "Free",
+          "Families",
+          "Teams",
+          "Enterprise",
+          "TeamsStarter"
+        ]
+      },
+      "ProductType": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32",
+        "x-enum-varnames": [
+          "PasswordManager",
+          "SecretsManager"
+        ]
+      },
+      "PublicKeyCredentialDescriptor": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/PublicKeyCredentialType"
+          },
+          "id": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "transports": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuthenticatorTransport"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PublicKeyCredentialType": {
+        "enum": [
+          "public-key"
+        ],
+        "type": "string",
+        "x-enum-varnames": [
+          "PublicKey"
+        ]
+      },
+      "RegisterFinishRequestModel": {
+        "required": [
+          "email",
+          "kdf",
+          "kdfIterations",
+          "masterPasswordHash",
+          "userAsymmetricKeys",
+          "userSymmetricKey"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 256,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "emailVerificationToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "masterPasswordHash": {
+            "maxLength": 1000,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "masterPasswordHint": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "userSymmetricKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "userAsymmetricKeys": {
+            "$ref": "#/components/schemas/KeysRequestModel"
+          },
+          "kdf": {
+            "$ref": "#/components/schemas/KdfType"
+          },
+          "kdfIterations": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "kdfMemory": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "kdfParallelism": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "organizationUserId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "orgInviteToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "orgSponsoredFreeFamilyPlanToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "acceptEmergencyAccessInviteToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "acceptEmergencyAccessId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "providerInviteToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "providerUserId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterFinishResponseModel": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "captchaBypassToken": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterSendVerificationEmailRequestModel": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "maxLength": 256,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "receiveMarketingEmails": {
+            "type": "boolean"
+          },
+          "fromMarketing": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterVerificationEmailClickedRequestModel": {
+        "required": [
+          "email",
+          "emailVerificationToken"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 256,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "emailVerificationToken": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TrialSendVerificationEmailRequestModel": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "maxLength": 256,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "receiveMarketingEmails": {
+            "type": "boolean"
+          },
+          "fromMarketing": {
+            "type": "string",
+            "nullable": true
+          },
+          "productTier": {
+            "$ref": "#/components/schemas/ProductTierType"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductType"
+            },
+            "nullable": true
+          },
+          "trialLength": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserVerificationRequirement": {
+        "enum": [
+          "required",
+          "preferred",
+          "discouraged"
+        ],
+        "type": "string",
+        "x-enum-varnames": [
+          "Required",
+          "Preferred",
+          "Discouraged"
+        ]
+      },
+      "WebAuthnLoginAssertionOptionsResponseModel": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "options": {
+            "$ref": "#/components/schemas/AssertionOptions"
+          },
+          "token": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TokenResponse": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "expires_in": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "token_type": {
+            "type": "string"
+          },
+          "refresh_token": {
+            "type": "string",
+            "nullable": true
+          },
+          "scope": {
+            "type": "string"
+          },
+          "PrivateKey": {
+            "type": "string",
+            "description": "RSA private key encrypted with the user symmetric key",
+            "nullable": true
+          },
+          "Key": {
+            "type": "string",
+            "description": "Protected symmetric key encrypted with the stretched master key",
+            "nullable": true
+          },
+          "Kdf": {
+            "type": "integer",
+            "description": "KDF type: 0=PBKDF2_SHA256, 1=Argon2id",
+            "format": "int32"
+          },
+          "KdfIterations": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "KdfMemory": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "KdfParallelism": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ForcePasswordReset": {
+            "type": "boolean"
+          },
+          "ResetMasterPassword": {
+            "type": "boolean"
+          },
+          "MasterPasswordPolicy": {
+            "type": "object",
+            "nullable": true
+          },
+          "UserDecryptionOptions": {
+            "type": "object",
+            "nullable": true
+          }
+        }
+      },
+      "TokenErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "error_description": {
+            "type": "string",
+            "nullable": true
+          },
+          "TwoFactorProviders": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "description": "Available 2FA provider types when 2FA is required",
+            "nullable": true
+          },
+          "TwoFactorProviders2": {
+            "type": "object",
+            "description": "Detailed 2FA provider info keyed by provider type",
+            "nullable": true
+          },
+          "SsoEmail2faSessionToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "MasterPasswordPolicy": {
+            "type": "object",
+            "nullable": true
+          }
+        }
+      }
+    }
+  },
+  "x-git-commit": "68702611916668660521c9657ad5b317fd9ebca4"
+}
