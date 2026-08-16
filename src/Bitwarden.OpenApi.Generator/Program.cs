@@ -180,12 +180,17 @@ Option<string> vwSpecsOption = new("--specs")
   { DefaultValueFactory = _ => "specs/bitwarden", Description = "Path to Bitwarden specs directory" };
 Option<string> vwOutputOption = new("--output")
   { DefaultValueFactory = _ => "specs/vaultwarden", Description = "Output directory for filtered specs" };
+Option<string?> vwBitwardenOption = new("--bitwarden-version")
+{
+  Description = "Bitwarden spec version to compare against, or 'latest' (default: version declared by Vaultwarden)"
+};
 
 Command vaultwardenCommand = new("vaultwarden", "Analyze Vaultwarden compatibility and generate filtered specs")
 {
   vwVersionArg,
   vwSpecsOption,
-  vwOutputOption
+  vwOutputOption,
+  vwBitwardenOption
 };
 
 vaultwardenCommand.SetAction(async (parseResult, ct) =>
@@ -206,15 +211,18 @@ vaultwardenCommand.SetAction(async (parseResult, ct) =>
   Console.WriteLine();
 
   // Find the matching Bitwarden spec version
-  string bwVersion = analysis.BitwardenCompatVersion;
+  string? bwRequested = parseResult.GetValue(vwBitwardenOption);
+  string bwVersion = bwRequested is null or "latest" ? analysis.BitwardenCompatVersion : bwRequested;
   string bwSpecDir = Path.Combine(specsDir, bwVersion);
-  if (!Directory.Exists(bwSpecDir))
+  if (bwRequested == "latest" || !Directory.Exists(bwSpecDir))
   {
     // Fall back to latest available
     string? available = Directory.GetDirectories(specsDir)
       .Select(Path.GetFileName)
       .Where(d => d != null && char.IsDigit(d[0]))
-      .OrderByDescending(d => d)
+      .OrderByDescending(d => d!.Split('.')
+        .Select(p => int.TryParse(p, out int n) ? n : 0)
+        .Aggregate(0L, (acc, n) => acc * 10000 + n))
       .FirstOrDefault();
 
     if (available == null)
@@ -224,7 +232,9 @@ vaultwardenCommand.SetAction(async (parseResult, ct) =>
       return;
     }
 
-    Console.WriteLine($"  Bitwarden {bwVersion} spec not found, using {available}");
+    Console.WriteLine(bwRequested == "latest"
+      ? $"  Using latest available Bitwarden spec {available} (Vaultwarden declares {bwVersion})"
+      : $"  Bitwarden {bwVersion} spec not found, using {available}");
     bwVersion = available;
     bwSpecDir = Path.Combine(specsDir, bwVersion);
   }

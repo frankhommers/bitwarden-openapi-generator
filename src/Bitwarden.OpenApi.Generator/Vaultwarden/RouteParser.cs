@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.RegularExpressions;
 using CliWrap;
 using CliWrap.Buffered;
@@ -54,30 +55,20 @@ public static partial class RouteParser
       {
         Console.WriteLine($"Cloning Vaultwarden {version}...");
 
-        if (version == "latest")
-        {
-          await Cli.Wrap("git")
-            .WithArguments(["clone", "--depth", "1", RepoUrl, sourcePath])
-            .ExecuteAsync(ct);
-        }
-        else
-        {
-          // Clone full repo and checkout tag
-          await Cli.Wrap("git")
-            .WithArguments(["clone", RepoUrl, sourcePath])
-            .WithValidation(CommandResultValidation.None)
-            .ExecuteAsync(ct);
-          await Cli.Wrap("git")
-            .WithArguments(["-c", "advice.detachedHead=false", "checkout", version])
-            .WithWorkingDirectory(sourcePath)
-            .WithValidation(CommandResultValidation.None)
-            .ExecuteAsync(ct);
+        string[] cloneArgs = version == "latest"
+          ? ["clone", "--depth", "1", RepoUrl, sourcePath]
+          : ["clone", "--depth", "1", "--branch", version, RepoUrl, sourcePath];
 
-          // Verify the checkout worked
-          string cargoPath = Path.Combine(sourcePath, "Cargo.toml");
-          if (!File.Exists(cargoPath))
-            throw new InvalidOperationException($"Failed to clone/checkout Vaultwarden {version}");
-        }
+        StringBuilder gitError = new();
+        CommandResult clone = await Cli.Wrap("git")
+          .WithArguments(cloneArgs)
+          .WithStandardErrorPipe(PipeTarget.ToStringBuilder(gitError))
+          .WithValidation(CommandResultValidation.None)
+          .ExecuteAsync(ct);
+
+        if (!File.Exists(Path.Combine(sourcePath, "Cargo.toml")))
+          throw new InvalidOperationException(
+            $"Failed to clone Vaultwarden {version} (git exit {clone.ExitCode}): {gitError}");
       }
     }
 

@@ -50,6 +50,18 @@ public class DockerSpecGenerator
     // Build Docker image with streaming output
     string dockerfilePath = GetDockerfilePath();
     StringBuilder stderrBuffer = new();
+    List<string> errorLines = [];
+
+    void HandleOutput(string line)
+    {
+      LogBuildOutput(line, version);
+      if (!IsErrorLine(line)) return;
+      lock (errorLines)
+      {
+        if (errorLines.Count < 20)
+          errorLines.Add(line.Trim());
+      }
+    }
 
     try
     {
@@ -65,16 +77,18 @@ public class DockerSpecGenerator
           "."
         ])
         .WithWorkingDirectory(Path.GetDirectoryName(dockerfilePath)!)
-        .WithStandardOutputPipe(PipeTarget.ToDelegate(line => LogBuildOutput(line, version)))
+        .WithStandardOutputPipe(PipeTarget.ToDelegate(HandleOutput))
         .WithStandardErrorPipe(PipeTarget.Merge(
-          PipeTarget.ToDelegate(line => LogBuildOutput(line, version)),
+          PipeTarget.ToDelegate(HandleOutput),
           PipeTarget.ToStringBuilder(stderrBuffer)))
         .WithValidation(CommandResultValidation.None)
         .ExecuteAsync(ct);
 
       if (result.ExitCode != 0)
       {
-        string error = stderrBuffer.ToString();
+        string error = errorLines.Count > 0
+          ? string.Join(" | ", errorLines)
+          : stderrBuffer.ToString();
         return new GenerateResult
         {
           Success = false,
@@ -181,21 +195,25 @@ public class DockerSpecGenerator
 
   /// <summary>
   /// Determine the .NET SDK version needed for a given Bitwarden server version.
-  /// The server migrated from .NET 6 to .NET 8 around 2024.8.0.
+  /// The server migrated from .NET 6 to .NET 8 at 2024.8.0 and to .NET 10 at 2026.5.0.
   /// </summary>
   private static string GetSdkVersion(string version)
   {
-    if (version == "main") return "8.0";
+    const string LatestSdk = "10.0";
+
+    if (version == "main") return LatestSdk;
 
     string[] parts = version.Split('.');
     if (parts.Length < 2 || !int.TryParse(parts[0], out int year) || !int.TryParse(parts[1], out int minor))
-      return "8.0";
+      return LatestSdk;
 
-    // Pre-2024.8: .NET 6, from 2024.8 onwards: .NET 8
     if (year < 2024 || (year == 2024 && minor < 8))
       return "6.0";
 
-    return "8.0";
+    if (year < 2026 || (year == 2026 && minor < 5))
+      return "8.0";
+
+    return LatestSdk;
   }
 
   private void LogBuildOutput(string line, string version)
@@ -212,6 +230,13 @@ public class DockerSpecGenerator
     // Docker BuildKit format: "#N step description"
     // Classic format: "Step N/M : RUN ..."
     string trimmed = line.TrimStart();
+
+    // Always surface compiler/restore errors, also inside BuildKit "#N <time> ..." lines
+    if (IsErrorLine(trimmed))
+    {
+      Console.WriteLine($"  [{version}] {trimmed}");
+      return;
+    }
 
     // BuildKit: lines starting with #<number> are step headers
     if (trimmed.StartsWith('#') && trimmed.Length > 1 && char.IsDigit(trimmed[1]))
@@ -238,11 +263,12 @@ public class DockerSpecGenerator
       return;
     }
 
-    // Show errors
-    if (trimmed.StartsWith("error", StringComparison.OrdinalIgnoreCase) ||
-        trimmed.Contains("FAILED", StringComparison.Ordinal))
-      Console.WriteLine($"  [{version}] {trimmed}");
   }
+
+  private static bool IsErrorLine(string line) =>
+    line.Contains("error ", StringComparison.OrdinalIgnoreCase) ||
+    line.Contains("error:", StringComparison.OrdinalIgnoreCase) ||
+    line.Contains("FAILED", StringComparison.Ordinal);
 
   private static void Log(string version, string message)
   {

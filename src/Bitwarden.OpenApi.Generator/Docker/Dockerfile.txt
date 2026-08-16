@@ -26,14 +26,19 @@ RUN TFM=$( \
       TFM=$(sed -n 's/.*<TargetFramework>\(.*\)<\/TargetFramework>.*/\1/p' src/Directory.Build.props 2>/dev/null | head -1); \
     fi && \
     if [ -z "$TFM" ]; then \
+      TFM=$(sed -n 's/.*<TargetFramework>\(.*\)<\/TargetFramework>.*/\1/p' Directory.Build.props 2>/dev/null | head -1); \
+    fi && \
+    if [ -z "$TFM" ]; then \
       TFM=$(find src/Api/bin/Release -name 'Api.dll' -path '*/net*/*' | head -1 | sed 's|.*/\(net[^/]*\)/.*|\1|'); \
     fi && \
     if [ -z "$TFM" ]; then TFM="net8.0"; fi && \
     echo "$TFM" > /tmp/tfm.txt && \
     echo "Detected TFM: $TFM"
 
-RUN dotnet build src/Api/Api.csproj -c Release --nologo -v quiet
-RUN dotnet build src/Identity/Identity.csproj -c Release --nologo -v quiet
+# NuGetAudit is disabled: Bitwarden sets TreatWarningsAsErrors, so advisories
+# published after a release turn NU19xx warnings into restore errors on old tags
+RUN dotnet build src/Api/Api.csproj -c Release --nologo -v minimal -p:NuGetAudit=false
+RUN dotnet build src/Identity/Identity.csproj -c Release --nologo -v minimal -p:NuGetAudit=false
 
 ENV ASPNETCORE_ENVIRONMENT=Development
 ENV GLOBALSETTINGS__SQLSERVER__CONNECTIONSTRING=placeholder
