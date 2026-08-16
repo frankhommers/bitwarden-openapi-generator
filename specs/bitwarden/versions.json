@@ -11,28 +11,6 @@
     }
   },
   {
-    "Version": "2025.1.1",
-    "SpecGroup": "2025.1.0",
-    "SameAsPrevious": true,
-    "VaultPaths": 365,
-    "Hashes": {
-      "bitwarden-vault.json": "17aa2d03b254a859",
-      "bitwarden-public.json": "5320a09021ba5b63",
-      "bitwarden-identity.json": "ccff9b4990149762"
-    }
-  },
-  {
-    "Version": "2025.1.2",
-    "SpecGroup": "2025.1.0",
-    "SameAsPrevious": true,
-    "VaultPaths": 365,
-    "Hashes": {
-      "bitwarden-vault.json": "17aa2d03b254a859",
-      "bitwarden-public.json": "5320a09021ba5b63",
-      "bitwarden-identity.json": "ccff9b4990149762"
-    }
-  },
-  {
     "Version": "2025.1.3",
     "SpecGroup": "2025.1.3",
     "SameAsPrevious": false,
@@ -154,17 +132,6 @@
     }
   },
   {
-    "Version": "2025.4.2",
-    "SpecGroup": "2025.4.1",
-    "SameAsPrevious": true,
-    "VaultPaths": 376,
-    "Hashes": {
-      "bitwarden-vault.json": "9310652db9052372",
-      "bitwarden-public.json": "9b66be0a865d18a1",
-      "bitwarden-identity.json": "6c4dac7f253703fd"
-    }
-  },
-  {
     "Version": "2025.4.3",
     "SpecGroup": "2025.4.3",
     "SameAsPrevious": false,
@@ -187,31 +154,9 @@
     }
   },
   {
-    "Version": "2025.5.1",
-    "SpecGroup": "2025.5.0",
-    "SameAsPrevious": true,
-    "VaultPaths": 390,
-    "Hashes": {
-      "bitwarden-vault.json": "274ce62fa75f3bf9",
-      "bitwarden-public.json": "58f7d538e7275b50",
-      "bitwarden-identity.json": "b324a20fdf61af6a"
-    }
-  },
-  {
     "Version": "2025.5.2",
     "SpecGroup": "2025.5.2",
     "SameAsPrevious": false,
-    "VaultPaths": 393,
-    "Hashes": {
-      "bitwarden-vault.json": "b04bc71518c85167",
-      "bitwarden-public.json": "58f7d538e7275b50",
-      "bitwarden-identity.json": "0a09556b7fb01dd6"
-    }
-  },
-  {
-    "Version": "2025.5.3",
-    "SpecGroup": "2025.5.2",
-    "SameAsPrevious": true,
     "VaultPaths": 393,
     "Hashes": {
       "bitwarden-vault.json": "b04bc71518c85167",
@@ -267,17 +212,6 @@
     "Version": "2025.7.1",
     "SpecGroup": "2025.7.1",
     "SameAsPrevious": false,
-    "VaultPaths": 407,
-    "Hashes": {
-      "bitwarden-vault.json": "d5b2459cf83fabaf",
-      "bitwarden-public.json": "038997430b85a1b3",
-      "bitwarden-identity.json": "0a09556b7fb01dd6"
-    }
-  },
-  {
-    "Version": "2025.7.2",
-    "SpecGroup": "2025.7.1",
-    "SameAsPrevious": true,
     "VaultPaths": 407,
     "Hashes": {
       "bitwarden-vault.json": "d5b2459cf83fabaf",
@@ -503,6 +437,127 @@
       "bitwarden-vault.json": "d19c67c28aa569c0",
       "bitwarden-public.json": "14d5ae3cb12926e1",
       "bitwarden-identity.json": "5d3ad87dd9e550af"
+    }
+  },
+  {
+    "Version": "2026.3.2",
+    "SpecGroup": "2026.3.2",
+    "SameAsPrevious": false,
+    "VaultPaths": 433,
+    "Hashes": {
+      "bitwarden-vault.json": "75bae52bce9b7689",
+      "bitwarden-public.json": "16ca494e7f81f1b6",
+      "bitwarden-identity.json": "844be253ad133e89"
+    }
+  },
+  {
+    "Version": "2026.4.0",
+    "SpecGroup": "2026.4.0",
+    "SameAsPrevious": false,
+    "VaultPaths": 434,
+    "Hashes": {
+      "bitwarden-vault.json": "d26228c0a44f695e",
+      "bitwarden-public.json": "ab22fe3ce44dde98",
+      "bitwarden-identity.json": "44f35529247f70dd"
+    }
+  },
+  {
+    "Version": "2026.4.1",
+    "SpecGroup": "2026.4.1",
+    "SameAsPrevious": false,
+    "VaultPaths": 434,
+    "Hashes": {
+      "bitwarden-vault.json": "a432a74fcbdf83de",
+      "bitwarden-public.json": "e3b7ca067d513850",
+      "bitwarden-identity.json": "a07d8a8effbb8ab5"
+    }
+  },
+  {
+    "Version": "2026.4.2",
+    "SpecGroup": "2026.4.2",
+    "SameAsPrevious": false,
+    "VaultPaths": 434,
+    "Hashes": {
+      "bitwarden-vault.json": "7d2289452d64b45b",
+      "bitwarden-public.json": "ca1efecafca611f6",
+      "bitwarden-identity.json": "1ccf6b2de81fa8c7"
+    }
+  },
+  {
+    "Version": "2026.5.0",
+    "SpecGroup": "2026.5.0",
+    "SameAsPrevious": false,
+    "VaultPaths": 436,
+    "Hashes": {
+      "bitwarden-vault.json": "2f62374a7951c48b",
+      "bitwarden-public.json": "e1ed209f073eee5a",
+      "bitwarden-identity.json": "07678fcf6ef38d29"
+    }
+  },
+  {
+    "Version": "2026.6.0",
+    "SpecGroup": "2026.6.0",
+    "SameAsPrevious": false,
+    "VaultPaths": 439,
+    "Hashes": {
+      "bitwarden-vault.json": "3bdaea353fbccd15",
+      "bitwarden-public.json": "6a8c4d333c3c3837",
+      "bitwarden-identity.json": "2b655a6276a74235"
+    }
+  },
+  {
+    "Version": "2026.6.1",
+    "SpecGroup": "2026.6.1",
+    "SameAsPrevious": false,
+    "VaultPaths": 442,
+    "Hashes": {
+      "bitwarden-vault.json": "13f7d7807d907374",
+      "bitwarden-public.json": "27c26d294fd2aaf3",
+      "bitwarden-identity.json": "ba7805489e2bc705"
+    }
+  },
+  {
+    "Version": "2026.6.2",
+    "SpecGroup": "2026.6.2",
+    "SameAsPrevious": false,
+    "VaultPaths": 442,
+    "Hashes": {
+      "bitwarden-vault.json": "c01beb8faee05cc7",
+      "bitwarden-public.json": "cae88ec0b99e2473",
+      "bitwarden-identity.json": "a3f7ceb5625e8feb"
+    }
+  },
+  {
+    "Version": "2026.7.0",
+    "SpecGroup": "2026.7.0",
+    "SameAsPrevious": false,
+    "VaultPaths": 458,
+    "Hashes": {
+      "bitwarden-vault.json": "99e5a29b19679986",
+      "bitwarden-public.json": "f954fc7355c40152",
+      "bitwarden-identity.json": "ab9bc64bfdc63d71"
+    }
+  },
+  {
+    "Version": "2026.7.1",
+    "SpecGroup": "2026.7.1",
+    "SameAsPrevious": false,
+    "VaultPaths": 458,
+    "Hashes": {
+      "bitwarden-vault.json": "1186eef8de6dfdfc",
+      "bitwarden-public.json": "7e1905aff9670009",
+      "bitwarden-identity.json": "373af94eb3d041a7"
+    }
+  },
+  {
+    "Version": "2026.7.2",
+    "SpecGroup": "2026.7.2",
+    "SameAsPrevious": false,
+    "VaultPaths": 461,
+    "Hashes": {
+      "bitwarden-vault.json": "62f485582c7791cb",
+      "bitwarden-public.json": "791b8660299fb09c",
+      "bitwarden-identity.json": "d4f8b2cd22530cae"
     }
   }
 ]
