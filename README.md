@@ -23,7 +23,9 @@ Three specs per version:
 | `bitwarden-identity.json` | Identity API — authentication, tokens, SSO, 2FA, including patched `/connect/token` |
 | `bitwarden-public.json` | Public API — organization management endpoints |
 
-Pre-generated specs are included in `specs/bitwarden/` (40 versions from 2025.1.0 to 2026.3.1) and `specs/vaultwarden/` (1.35.4).
+Pre-generated, versioned specs are included in `specs/bitwarden/` and `specs/vaultwarden/`.
+Vaultwarden 1.37.2 uses its declared Bitwarden API version 2026.6.0 and matches 248 endpoints
+across the three specs. Its generated contracts are unchanged from 1.37.1; only version metadata differs.
 
 ## Requirements
 
@@ -43,7 +45,7 @@ dotnet run --project src/Bitwarden.OpenApi.Generator -- generate-all --from 2025
 dotnet run --project src/Bitwarden.OpenApi.Generator -- list-tags
 
 # Analyze Vaultwarden compatibility and generate filtered specs
-dotnet run --project src/Bitwarden.OpenApi.Generator -- vaultwarden 1.35.4
+dotnet run --project src/Bitwarden.OpenApi.Generator -- vaultwarden 1.37.2
 
 # Re-run consolidation on existing specs
 dotnet run --project src/Bitwarden.OpenApi.Generator -- consolidate
